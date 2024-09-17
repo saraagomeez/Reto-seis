@@ -181,7 +181,7 @@ class Point:
         try:
             distance = ((self._x - other_point.get_x())**2 + (self._y - other_point.get_y())**2)**0.5
             return distance
-        except AttributeError:
+        except AttributeError: #Ocurre si alguno de los puntos no existe.
             print("Error: uno de los puntos no es valido.")
             return None
     
@@ -194,7 +194,7 @@ class Line:
         try:
             lenght = ((self._end._x - self._start.get_x())**2 + (self._end._y - self._start.get_y())**2)**0.5
             return lenght
-        except AttributeError:
+        except AttributeError: #Ocurre si el inicio o final de la linea no está definido.
             print("Error: uno de los puntos que define la linea no es valido.")
     
 class Shape:
@@ -231,7 +231,7 @@ class Isosceles(Triangle):
             base = edgeC.compute_lenght()
             height = ((lenght_edgeB)**2 - (lenght_edgeC/2)**2)**0.5
             return (base * height) / 2
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
@@ -240,13 +240,13 @@ class Isosceles(Triangle):
             lenght_edgeB = edgeB.compute_lenght()
             lenght_edgeC = edgeC.compute_lenght()
             return lenght_edgeA + lenght_edgeB + lenght_edgeC
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleA + angleB + angleC
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeA = Point(0,0)
@@ -285,7 +285,7 @@ class Equilateral(Triangle):
             base = edgeF.compute_lenght()
             height = verticeF.compute_distance(point_height)
             return (base * height) / 2
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
@@ -294,13 +294,13 @@ class Equilateral(Triangle):
             lenght_edgeE = edgeE.compute_lenght()
             lenght_edgeF = edgeF.compute_lenght()
             return lenght_edgeD + lenght_edgeE + lenght_edgeF
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleD + angleE + angleF
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeD = Point(0,0)
@@ -338,7 +338,7 @@ class Scalene(Triangle):
             base = edgeI.compute_lenght()
             height = verticeI.compute_distance(point_height)
             return (base * height) / 2
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
@@ -347,13 +347,13 @@ class Scalene(Triangle):
             lenght_edgeH = edgeH.compute_lenght()
             lenght_edgeI = edgeI.compute_lenght()
             return lenght_edgeG + lenght_edgeH + lenght_edgeI
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleG + angleH + angleI
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeG = Point(0,0)
@@ -391,7 +391,7 @@ class TriRectangle(Triangle):
             base = edgeL.compute_lenght()
             height = edgeK.compute_lenght()
             return (base * height) / 2
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
@@ -400,13 +400,13 @@ class TriRectangle(Triangle):
             lenght_edgeK = edgeK.compute_lenght()
             lenght_edgeL = edgeL.compute_lenght()
             return lenght_edgeJ + lenght_edgeK + lenght_edgeL
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleJ + angleK + angleL
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeJ = Point(0,0)
@@ -443,7 +443,7 @@ class Rectangle(Shape):
             width = edgeN.compute_lenght() or edgeP.compute_lenght()
             lenght = edgeM.compute_lenght() or edgeO.compute_lenght()
             return width * lenght
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
@@ -451,13 +451,13 @@ class Rectangle(Shape):
             width = edgeN.compute_lenght() or edgeP.compute_lenght()
             lenght = edgeM.compute_lenght() or edgeO.compute_lenght()
             return (width * 2) + (lenght * 2)
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleM + angleN + angleO + angleP
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeM = Point(0,0)
@@ -493,20 +493,20 @@ class Square(Rectangle):
         try:
             side = edgeQ.compute_lenght() or edgeR.compute_lenght() or edgeT.compute_lenght() or edgeU.compute_lenght()
             return side**2
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_perimeter(self):
         try:
             side = edgeQ.compute_lenght() or edgeR.compute_lenght() or edgeT.compute_lenght() or edgeU.compute_lenght()
             return side * 4
-        except AttributeError:
+        except AttributeError: #Ocurre en caso de que las aristas no estén definidas.
             print("Error: asegurese que las aristas esten definidos.")
     
     def compute_inner_angles(self):
         try:
             return angleQ + angleR + angleT + angleU
-        except TypeError:
+        except TypeError: #Ocurre en caso de que los ángulos no estén definidos.
             print("Error: asegurese que los angulos esten definidos.")
     
 verticeQ = Point(0,0)
@@ -533,4 +533,5 @@ print("Square area: ", square.compute_area())
 print("Square perimeter: ", square.compute_perimeter())
 print("Square inner angles: ", square.compute_inner_angles())
 print("\n")
+
 ```
